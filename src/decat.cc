@@ -76,11 +76,11 @@ int main(int argc, char * * argv) {
 			exit(1);
 		}
 		
-		auto const &
-			t_path = tokens[0],
-			t_size = tokens[1],
-			t_time = tokens[2],
-			t_chck = tokens[3];
+		std::string_view const &
+			t_path { tokens[0].begin(), tokens[tokens.size() - 4].end() },
+			t_size = tokens[tokens.size() - 3],
+			t_time = tokens[tokens.size() - 2],
+			t_chck = tokens[tokens.size() - 1];
 			
 		fs::path path = fs::current_path() / archive_name / t_path;
 		
